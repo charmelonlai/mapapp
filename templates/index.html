@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset = "UTF-8">
+		<title>Web Architecture: Project 2</title>
+		<link rel="stylesheet" href="static/css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+	
+		<h1>Map App</h1>
+
+		 <form id = 'mapdata' action='/map' method="POST">
+		 	<div>
+		        <label for="map_point">Enter map data here: </label> 
+
+		        <input type="text" name="mappoints" id= "map_point" class = "map" autocorrect="off" class="flush-bottom"><div id = "map_submit">
+
+	        		<button type = "submit" > SUBMIT </button>
+	        	</div>
+		     </div>
+		</form>
+	</body>

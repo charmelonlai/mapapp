@@ -24,23 +24,22 @@ db = shelve.open("map.db")
 def index():
     return flask.render_template('index.html')
 
-@app.route("/map")
+@app.route("/map",methods=['POST'])
 def mapview():
+	mapData = request.form.get('mappoints')
+	mapData = eval(mapData)
+	print mapData
+
     # creating a map in the view
-    mymap = Map(
-        identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
-    )
-    sndmap = Map(
-        identifier="sndmap",
-        lat=37.4419,
-        lng=-122.1419,
-        markers={'http://maps.google.com/mapfiles/ms/icons/green-dot.png':[(37.4419, -122.1419)],
-                 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png':[(37.4300, -122.1400)]}
-    )
-    return render_template('map.html', mymap=mymap, sndmap=sndmap)
+	sndmap = Map(
+		identifier="sndmap",
+		lat= 39.5,
+		lng= -98.35,
+		zoom = 5,
+		style = "height: 100%; width: 100%; top:0; left:0; position:absolute; z-index:200",
+		markers= {'http://maps.google.com/mapfiles/ms/icons/green-dot.png': mapData}
+	)
+	return render_template('map.html', sndmap=sndmap)
 
 if __name__ == "__main__":
     app.run()
